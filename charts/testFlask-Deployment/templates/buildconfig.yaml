@@ -1,0 +1,32 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: testflask
+  namespace: {{ .Values.projectDevName }}
+  labels:
+    app: testFlask
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'testflask:latest'
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  strategy:
+    type: {{ .Values.buildStrategy }}
+    {{- if eq .Values.buildStrategy "Source" }}
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'python:3.8-ubi8'
+    {{- end }}
+  postCommit: {}
+  source:
+    type: Git
+    git:
+      uri: {{ .Values.gitURL }}
+  runPolicy: Serial
+status:
+  lastVersion: 0

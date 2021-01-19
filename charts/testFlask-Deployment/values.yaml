@@ -3,7 +3,6 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-
 image:
   repository: nginx
   pullPolicy: IfNotPresent
@@ -11,8 +10,12 @@ image:
   tag: ""
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: "testflask"
+fullnameOverride: "testflask"
+
+projectDevName: "apptest2"
+gitURL: "https://github.com/MoOyeg/testFlask.git"
+buildStrategy: "Source"
 
 serviceAccount:
   # Specifies whether a service account should be created
