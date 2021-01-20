@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "testFlask-Build-Source.name" . }}-start-build
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": hook-succeeded
+  labels:
+    {{- include "testFlask-Build-Source.labels" . | nindent 4 }}
+spec:
+  template:
+    metadata:
+      name: {{ include "testFlask-Build-Source.name" . }}-start-build
+      labels: {}
+    spec:
+      containers:
+        - name: kubectl
+          image: "quay.io/openshift/origin-cli:4.6"
+          imagePullPolicy: "IfNotPresent"
+          command:
+          - /bin/sh
+          - -c
+          - >
+              oc get pods;
+      restartPolicy: OnFailure

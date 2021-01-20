@@ -1,10 +1,14 @@
 kind: BuildConfig
 apiVersion: build.openshift.io/v1
 metadata:
-  name: testflask
-  namespace: {{ .Values.projectDevName }}
+  name: {{ include "testFlask-Build-Source.name" . }}
+  namespace: {{ .Release.Namespace }}
   labels:
-    app: testFlask
+    {{- include "testFlask-Build-Source.labels" . | nindent 4 }}
+  {{- with .Values.buildConfig.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   nodeSelector: null
   output:
@@ -20,7 +24,7 @@ spec:
       from:
         kind: ImageStreamTag
         namespace: openshift
-        name: 'python:3.8-ubi8'
+        name: 'python:3.6-ubi8'
     {{- end }}
   postCommit: {}
   source:
