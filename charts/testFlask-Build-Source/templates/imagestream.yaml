@@ -14,4 +14,4 @@ spec:
   lookupPolicy:
     local: false
 status:
-  dockerImageRepository: {{ printf "%s/%s/%s" .Values.buildConfig.is_url .Release.Namespace ( include testFlask-Build-Source.name )}}
+  dockerImageRepository: {{ include "testFlask-Build-Source.imagestream" . }}

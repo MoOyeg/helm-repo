@@ -5,7 +5,7 @@ Expand the name of the chart.
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
-{{- define "testFlask-Build-Source.Imagestream" -}}
+{{- define "testFlask-Build-Source.imagestream" -}}
 {{- $tempname := default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- $tempimgurl := default (printf "image-registry.openshift-image-registry.svc") .Values.imagestream.tag | trunc 63 | trimSuffix "-" }}
 {{- $tempimgurl1 := printf "%s/%s" $tempimageurl .Release.Namespace }}
