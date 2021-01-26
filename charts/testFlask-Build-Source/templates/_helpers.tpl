@@ -8,8 +8,8 @@ Expand the name of the chart.
 {{- define "testFlask-Build-Source.imagestream" -}}
 {{- $tempname := default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- $tempimgurl := default (printf "image-registry.openshift-image-registry.svc") .Values.imagestream.tag | trunc 63 | trimSuffix "-" }}
-{{- $tempimgurl1 := printf "%s/%s" $tempimageurl .Release.Namespace }}
-{{- printf "%s/%s" $tempimageurl1 $tempname }}
+{{- $tempimgurl1 := printf "%s/%s" $tempimgurl .Release.Namespace }}
+{{- printf "%s/%s" $tempimgurl1 $tempname }}
 {{- end }}
 
 {{/*
