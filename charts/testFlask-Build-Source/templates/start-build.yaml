@@ -12,9 +12,10 @@ metadata:
 spec:
   template:
     metadata:
-      name: {{ include "testFlask-Build-Source.name" . }}-start-build
+      name: {{ include "testFlask-Build-Source.serviceAccountName" . }}-start-build
       labels: {}
     spec:
+      serviceAccountName: {{ include "testFlask-Build-Source.serviceAccountName" . }}
       containers:
         - name: kubectl
           image: "quay.io/openshift/origin-cli:4.6"

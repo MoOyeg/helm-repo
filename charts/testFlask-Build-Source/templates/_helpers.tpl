@@ -55,7 +55,7 @@ Create the name of the service account to use
 */}}
 {{- define "testFlask-Build-Source.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "testFlask-Build-Source.fullname" .) .Values.serviceAccount.name }}
+{{- .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
