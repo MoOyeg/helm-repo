@@ -14,4 +14,4 @@ spec:
   lookupPolicy:
     local: false
 status:
-  dockerImageRepository: {{- printf "image-registry.openshift-image-registry.svc:5000/".Release.Namespace"/testflask" }}
+  dockerImageRepository: {{ printf "%s/%s/%s" .Values.buildConfig.is_url .Release.Namespace ( include testFlask-Build-Source.name )}}

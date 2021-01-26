@@ -5,6 +5,13 @@ Expand the name of the chart.
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
+{{- define "testFlask-Build-Source.Imagestream" -}}
+{{- $tempname := default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- $tempimgurl := default (printf "image-registry.openshift-image-registry.svc") .Values.imagestream.tag | trunc 63 | trimSuffix "-" }}
+{{- $tempimgurl1 := printf "%s/%s" $tempimageurl .Release.Namespace }}
+{{- printf "%s/%s" $tempimageurl1 $tempname }}
+{{- end }}
+
 {{/*
 Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).

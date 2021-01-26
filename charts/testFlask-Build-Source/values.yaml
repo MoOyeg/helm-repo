@@ -29,6 +29,11 @@ buildConfig:
   annotations: {}
   name: "testflask-bc"
 
+imagestream:
+  urlOverride: ""
+  nameOverride: ""
+  tag: ""
+
 
 podAnnotations: {}
 
