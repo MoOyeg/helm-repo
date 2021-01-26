@@ -14,7 +14,7 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: 'testflask:latest'
+      name: {{ include "testFlask-Build-Source.name" . }}:latest
   successfulBuildsHistoryLimit: 5
   failedBuildsHistoryLimit: 5
   strategy:

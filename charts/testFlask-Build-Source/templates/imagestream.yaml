@@ -1,0 +1,17 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: {{ include "testFlask-Build-Source.name" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "testFlask-Build-Source.labels" . | nindent 4 }}
+  {{- with .Values.buildConfig.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  name: {{ include "testFlask-Build-Source.name" . }}
+spec:
+  lookupPolicy:
+    local: false
+status:
+  dockerImageRepository: {{- printf "image-registry.openshift-image-registry.svc:5000/".Release.Namespace"/testflask" }}

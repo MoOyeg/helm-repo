@@ -17,12 +17,17 @@ spec:
     spec:
       serviceAccountName: {{ include "testFlask-Build-Source.serviceAccountName" . }}
       containers:
-        - name: kubectl
+        - name: oc
           image: "quay.io/openshift/origin-cli:4.6"
           imagePullPolicy: "IfNotPresent"
+          env:
+          - name: BUILDCONFIG_NAMESPACE
+            value: {{ .Release.Namespace | quote }}
+          - name: BUILDCONFIG_NAME
+            value: {{ include "testFlask-Build-Source.name" . | quote }}
           command:
           - /bin/sh
           - -c
           - >
-              oc get pods;
+              oc start-build $BUILDCONFIG_NAME -n $BUILDCONFIG_NAMESPACE;
       restartPolicy: OnFailure
