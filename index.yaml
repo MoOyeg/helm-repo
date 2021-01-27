@@ -1,25 +1,25 @@
 apiVersion: v1
 entries:
-  testFlask-Build-Source:
+  testflask-build-source:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-01-26T14:23:42.485486786-05:00"
+    created: "2021-01-27T09:17:42.764750808-05:00"
     description: A Helm chart for Kubernetes
-    digest: f243a6da9ef116cb5e2a89ce1878d9ffc01caa624c6563373f764acf67c56ee0
-    name: testFlask-Build-Source
+    digest: 9d253029ea1d67e09ff9bbdb30b5d9ec63c949f1424bdfbd3de2024eb92df222
+    name: testflask-build-source
     type: application
     urls:
-    - https://mooyeg.github.io/helm-repo/testFlask-Build-Source-0.1.0.tgz
+    - https://mooyeg.github.io/helm-repo/testflask-build-source-0.1.0.tgz
     version: 0.1.0
-  testFlask-Deployment:
+  testflask-deployment:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-01-26T14:23:42.486044978-05:00"
+    created: "2021-01-27T09:17:42.765332142-05:00"
     description: A Helm chart for Kubernetes
-    digest: 9cf57d0b232aba7c969b215fa08c64506e920861bb7cd33196bda6e08d49200b
-    name: testFlask-Deployment
+    digest: 6e07c5af3f32f02a408580c57c6f249462793b7c1bda5217bc7deabd68b4cf0f
+    name: testflask-deployment
     type: application
     urls:
-    - https://mooyeg.github.io/helm-repo/testFlask-Deployment-0.1.0.tgz
+    - https://mooyeg.github.io/helm-repo/testflask-deployment-0.1.0.tgz
     version: 0.1.0
-generated: "2021-01-26T14:23:42.484703663-05:00"
+generated: "2021-01-27T09:17:42.763971466-05:00"
