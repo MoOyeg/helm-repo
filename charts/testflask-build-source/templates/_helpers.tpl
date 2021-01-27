@@ -1,11 +1,11 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "testFlask-Build-Source.name" -}}
+{{- define "testflask-build-source.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
-{{- define "testFlask-Build-Source.imagestream" -}}
+{{- define "testflask-build-source.imagestream" -}}
 {{- $tempname := default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- $tempimgurl := default (printf "image-registry.openshift-image-registry.svc") .Values.imagestream.tag | trunc 63 | trimSuffix "-" }}
 {{- $tempimgurl1 := printf "%s/%s" $tempimgurl .Release.Namespace }}
@@ -17,7 +17,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "testFlask-Build-Source.fullname" -}}
+{{- define "testflask-build-source.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -33,16 +33,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "testFlask-Build-Source.chart" -}}
+{{- define "testflask-build-source.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "testFlask-Build-Source.labels" -}}
-helm.sh/chart: {{ include "testFlask-Build-Source.chart" . }}
-{{ include "testFlask-Build-Source.selectorLabels" . }}
+{{- define "testflask-build-source.labels" -}}
+helm.sh/chart: {{ include "testflask-build-source.chart" . }}
+{{ include "testflask-build-source.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -52,15 +52,15 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "testFlask-Build-Source.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "testFlask-Build-Source.name" . }}
+{{- define "testflask-build-source.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "testflask-build-source.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "testFlask-Build-Source.serviceAccountName" -}}
+{{- define "testflask-build-source.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
 {{- .Values.serviceAccount.name }}
 {{- else }}

@@ -1,0 +1,2 @@
+1. Confirm application build was successful 
+ oc get build -namespace {{ .Release.Namespace }}

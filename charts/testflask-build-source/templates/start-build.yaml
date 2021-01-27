@@ -1,21 +1,21 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "testFlask-Build-Source.name" . }}-start-build
+  name: {{ include "testflask-build-source.name" . }}-start-build
   namespace: {{ .Release.Namespace }}
   annotations:
     "helm.sh/hook": post-install
     "helm.sh/hook-weight": "-5"
     "helm.sh/hook-delete-policy": hook-succeeded
   labels:
-    {{- include "testFlask-Build-Source.labels" . | nindent 4 }}
+    {{- include "testflask-build-source.labels" . | nindent 4 }}
 spec:
   template:
     metadata:
-      name: {{ include "testFlask-Build-Source.serviceAccountName" . }}-start-build
+      name: {{ include "testflask-build-source.serviceAccountName" . }}-start-build
       labels: {}
     spec:
-      serviceAccountName: {{ include "testFlask-Build-Source.serviceAccountName" . }}
+      serviceAccountName: {{ include "testflask-build-source.serviceAccountName" . }}
       containers:
         - name: oc
           image: "quay.io/openshift/origin-cli:4.6"
@@ -24,7 +24,7 @@ spec:
           - name: BUILDCONFIG_NAMESPACE
             value: {{ .Release.Namespace | quote }}
           - name: BUILDCONFIG_NAME
-            value: {{ include "testFlask-Build-Source.name" . | quote }}
+            value: {{ include "testflask-build-source.name" . | quote }}
           command:
           - /bin/sh
           - -c

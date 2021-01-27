@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "testFlask-Deployment.fullname" . }}-test-connection"
+  name: "{{ include "testflask-deployment.fullname" . }}-test-connection"
   labels:
-    {{- include "testFlask-Deployment.labels" . | nindent 4 }}
+    {{- include "testflask-deployment.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test
 spec:
@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "testFlask-Deployment.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "testflask-deployment.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never

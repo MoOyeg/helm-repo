@@ -1,17 +1,17 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: {{ include "testFlask-Build-Source.name" . }}
+  name: {{ include "testflask-build-source.name" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "testFlask-Build-Source.labels" . | nindent 4 }}
+    {{- include "testflask-build-source.labels" . | nindent 4 }}
   {{- with .Values.buildConfig.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
-  name: {{ include "testFlask-Build-Source.name" . }}
+  name: {{ include "testflask-build-source.name" . }}
 spec:
   lookupPolicy:
     local: false
 status:
-  dockerImageRepository: {{ include "testFlask-Build-Source.imagestream" . }}
+  dockerImageRepository: {{ include "testflask-build-source.imagestream" . }}
