@@ -11,10 +11,12 @@ image:
   tag: ""
 
 imagePullSecrets: []
-nameOverride: "testflask2"
-fullnameOverride: "testflask2"
+nameOverride: "testflask"
+fullnameOverride: "testflask"
 gitURL: "https://github.com/MoOyeg/testFlask.git"
+#Select Strategy to build Source or Docker
 buildStrategy: "Source"
+builderImage: "python:3.6-ubi8"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -22,8 +24,8 @@ serviceAccount:
   # Annotations to add to the service account
   annotations: {}
   # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: "appdev"
+  # If not set and create is true, will use the provided namespace-name-build 
+  name: ""
 
 buildConfig:
   annotations: {}

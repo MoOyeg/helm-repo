@@ -18,14 +18,18 @@ spec:
   successfulBuildsHistoryLimit: 5
   failedBuildsHistoryLimit: 5
   strategy:
+  {{- if eq .Values.buildStrategy "Source" }}
     type: {{ .Values.buildStrategy }}
-    {{- if eq .Values.buildStrategy "Source" }}
     sourceStrategy:
       from:
         kind: ImageStreamTag
         namespace: openshift
-        name: 'python:3.6-ubi8'
-    {{- end }}
+        name: {{ .Values.builderImage }}
+  {{- else if eq .Values.buildStrategy "Docker" }}
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Dockerfile    
+  {{- end }}
   postCommit: {}
   source:
     type: Git
