@@ -63,8 +63,6 @@ Create the name of the service account to use
 {{- define "testflask-build-source.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
 {{- printf "%s-%s" .Release.Namespace "build" | trunc 63 | trimSuffix "-" }}
-#{{- else }}
-#{{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
 
@@ -73,7 +71,7 @@ Create the rolebinding from serviceaccountname
 */}}
 {{- define "testflask-build-source.clusterRoleBinding" -}}
 {{- if .Values.serviceAccount.create }}
-{{- printf "%s-%s" .Release.Namespace "build" | trunc 63 | trimSuffix "-" }}
+{{- printf "%s-%s" .Release.Namespace "build-clusterRoleBinding" | trunc 63 | trimSuffix "-" }}
 #{{- else }}
 #{{- default "default" .Values.serviceAccount.name }}
 {{- end }}
