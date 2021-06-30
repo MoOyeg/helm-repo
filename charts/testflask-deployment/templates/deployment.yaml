@@ -31,19 +31,24 @@ spec:
         - name: {{ .Values.nameOverride }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: {{ include "testflask-deployment.imageName" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: APP_CONFIG
+              value: {{ .Values.appconfig }}
+            - name: APP_MODULE
+              value: {{ .Values.appmodule }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 8080
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /health
               port: http
           readinessProbe:
             httpGet:
-              path: /
+              path: /ready
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

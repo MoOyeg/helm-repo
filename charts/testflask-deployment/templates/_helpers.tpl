@@ -60,3 +60,10 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Create Image name based on the namespace
+*/}}
+{{- define "testflask-deployment.imageName" -}}
+{{- printf "%s/%s/%s:%s" .Values.image.repository .Release.Namespace (include "testflask-deployment.fullname" .) .Values.image.tag }}
+{{- end }}

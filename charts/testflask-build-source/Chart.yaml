@@ -1,6 +1,6 @@
 apiVersion: v2
 name: testflask-build-source
-description: A Helm chart for Kubernetes
+description: Helm Chart to Build TestFlask Application using s2i
 
 # A chart can be either an 'application' or a 'library' chart.
 #

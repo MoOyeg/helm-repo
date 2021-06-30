@@ -1,6 +1,6 @@
 apiVersion: v2
 name: testflask-deployment
-description: A Helm chart for Kubernetes
+description: Helm Chart to Create TestFlask Deployment 
 
 # A chart can be either an 'application' or a 'library' chart.
 #

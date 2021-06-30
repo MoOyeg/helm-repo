@@ -1,25 +1,25 @@
 apiVersion: v1
 entries:
   testflask-build-source:
-    - apiVersion: v2
-      appVersion: 1.16.0
-      created: "2021-06-29T21:48:16.054919031-04:00"
-      description: Helm Chart to Build TestFlask Application Images
-      digest: c038810cbbda047d6b61efe0e3b49621fecf68864591fc4a91aff0e986a7bb9c
-      name: testflask-build-source
-      type: application
-      urls:
-        - https://mooyeg.github.io/testflask-helm-repo/testflask-build-source-0.1.0.tgz
-      version: 0.1.0
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-06-29T23:15:39.567565653-04:00"
+    description: Helm Chart to Build TestFlask Application using s2i
+    digest: 9d472d41f7e59d56f77cc5a9c5fd7a48a4e8527e56730804d187fef9c618c5d6
+    name: testflask-build-source
+    type: application
+    urls:
+    - https://mooyeg.github.io/testflask-helm-repo/testflask-build-source-0.1.0.tgz
+    version: 0.1.0
   testflask-deployment:
-    - apiVersion: v2
-      appVersion: 1.16.0
-      created: "2021-06-29T21:48:16.055455253-04:00"
-      description: Helm Chart to Deploy the TestFlask Application
-      digest: 0767a171d846ce5c19d8ff8e6da2a57f198f2d145fdee4a7d34c80669bb12ce1
-      name: testflask-deployment
-      type: application
-      urls:
-        - https://mooyeg.github.io/testflask-helm-repo/testflask-deployment-0.1.0.tgz
-      version: 0.1.0
-generated: "2021-06-29T21:48:16.054053706-04:00"
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-06-29T23:15:39.568122556-04:00"
+    description: Helm Chart to Create TestFlask Deployment
+    digest: 726d5696f558d062fb9801b1997da09e638b7c2ff6bfffd49e00d850c559782a
+    name: testflask-deployment
+    type: application
+    urls:
+    - https://mooyeg.github.io/testflask-helm-repo/testflask-deployment-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-06-29T23:15:39.566643849-04:00"
