@@ -29,3 +29,7 @@ e.g. ```helm install testflask-deploy testflask-repo/testflask-deployment -n app
 ## To Uninstall<br/>
 1 ```helm uninstall testflask-deploy -n appdev```<br/>
 2 ```helm uninstall testflask-build -n appdev```<br/>
+
+
+## Create Helm Chart Repo that shows up in Developer Perspective<br/>
+1 ```oc create -f ./openshift-helm-repo.yaml```<br/>

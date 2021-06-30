@@ -1,0 +1,12 @@
+apiVersion: helm.openshift.io/v1beta1
+kind: HelmChartRepository
+metadata:
+  annotations:
+    include.release.openshift.io/self-managed-high-availability: "true"
+    include.release.openshift.io/single-node-developer: "true"
+    release.openshift.io/create-only: "true"
+  name: testflask-helm-repo
+spec:
+  connectionConfig:
+    url: https://mooyeg.github.io/testflask-helm-repo
+  name: testflask-helm-repo
